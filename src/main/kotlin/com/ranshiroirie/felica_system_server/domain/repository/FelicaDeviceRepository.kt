@@ -33,13 +33,13 @@ interface FelicaDeviceRepository {
             @Param("card_id")card_id: String,
             @Param("card_pmm")card_pmm: String,
             @Param("card_sys")card_sys: String
-    ): FelicaDevice
+    )
 
     @Update("UPDATE felica_device SET device_name = #{device_name} where felica_id = #{felica_id};")
     fun updateFelicaDeviceNameById(
             @Param("felica_id")felica_id: Int,
             @Param("device_name")device_name: String
-    ): FelicaDevice
+    )
 
     @Delete("DELETE FROM felica_device WHERE felica_id = #{felica_id};")
     fun deleteFelicaDeviceById(@Param("felica_id")felica_id: Int) : Int

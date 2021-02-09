@@ -24,11 +24,13 @@ class FelicaDeviceServiceImpl : FelicaDeviceService {
     }
 
     override fun getInsertFelicaDeviceInfo(device_name: String, card_id: String, card_pmm: String, card_sys: String): FelicaDevice {
-        return felicaDeviceRepository.insertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys)
+        felicaDeviceRepository.insertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys)
+        return felicaDeviceRepository.selectFelicaDeviceByCardInfo(device_name, card_id, card_pmm, card_sys)
     }
 
     override fun getUpdateFelicaDeviceNameById(felica_id: Int, device_name: String): FelicaDevice {
-        return felicaDeviceRepository.updateFelicaDeviceNameById(felica_id, device_name)
+        felicaDeviceRepository.updateFelicaDeviceNameById(felica_id, device_name)
+        return felicaDeviceRepository.selectFelicaDeviceById(felica_id)
     }
 
     override fun getDeleteFelicaDeviceById(felica_id: Int): FelicaDevice {
