@@ -1,10 +1,10 @@
 package com.ranshiroirie.felica_system_server.app.controller
 
 import com.ranshiroirie.felica_system_server.domain.entity.FelicaDevice
-import com.ranshiroirie.felica_system_server.domain.repository.FelicaDeviceRepository
-import com.ranshiroirie.felica_system_server.domain.service.FelicaDeviceService
+import com.ranshiroirie.felica_system_server.domain.service.felica_device.FelicaDeviceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+
 
 @RestController
 class FelicaDeviceController {
@@ -29,7 +29,7 @@ class FelicaDeviceController {
 
     @GetMapping("/felica_device/get/felica_id")
     fun getFelicaDeviceById(
-        @RequestParam ("felica_id",required=true)felica_id: Int
+        @RequestParam ("felica_id",required=true)felica_id: Long
     ): FelicaDevice{
         return felicaDeviceService.getFelicaDeviceById(felica_id)
     }
@@ -46,7 +46,7 @@ class FelicaDeviceController {
 
     @PutMapping("/felica_device/update/felica_id")
     fun updateFelicaDeviceNameById(
-        @RequestParam ("felica_id",required=true)felica_id: Int,
+        @RequestParam ("felica_id",required=true)felica_id: Long,
         @RequestParam ("device_name", required=true)device_name: String
     ):FelicaDevice{
         return felicaDeviceService.getUpdateFelicaDeviceNameById(felica_id, device_name)
@@ -54,7 +54,7 @@ class FelicaDeviceController {
 
     @DeleteMapping("/felica_device/delete/felica_id")
     fun deleteFelicaDeviceById(
-        @RequestParam ("felica_id",required=true)felica_id: Int
+        @RequestParam ("felica_id",required=true)felica_id: Long
     ):FelicaDevice{
         return felicaDeviceService.getDeleteFelicaDeviceById(felica_id)
     }

@@ -1,6 +1,6 @@
 package com.ranshiroirie.felica_system_server.domain.entity
 
-import java.sql.Timestamp
+import java.util.*
 
 data class FelicaDevice (
         var felica_id: Long,
@@ -8,5 +8,5 @@ data class FelicaDevice (
         var card_id: String,
         var card_pmm: String,
         var card_sys: String,
-        var registered_datetime:Timestamp
+        var registered_datetime:Date
         )

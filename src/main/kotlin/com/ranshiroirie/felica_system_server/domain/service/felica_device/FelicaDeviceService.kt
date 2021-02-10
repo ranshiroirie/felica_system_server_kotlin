@@ -1,4 +1,4 @@
-package com.ranshiroirie.felica_system_server.domain.service
+package com.ranshiroirie.felica_system_server.domain.service.felica_device
 
 import com.ranshiroirie.felica_system_server.domain.entity.FelicaDevice
 
@@ -13,7 +13,7 @@ interface FelicaDeviceService {
             card_sys: String
     ): FelicaDevice
 
-    fun getFelicaDeviceById(felica_id: Int): FelicaDevice
+    fun getFelicaDeviceById(felica_id: Long): FelicaDevice
 
     fun getInsertFelicaDeviceInfo(
             device_name: String,
@@ -22,8 +22,8 @@ interface FelicaDeviceService {
             card_sys: String
     ): FelicaDevice
 
-    fun getUpdateFelicaDeviceNameById(felica_id: Int, device_name: String): FelicaDevice
+    fun getUpdateFelicaDeviceNameById(felica_id: Long, device_name: String): FelicaDevice
 
-    fun getDeleteFelicaDeviceById(felica_id: Int): FelicaDevice
+    fun getDeleteFelicaDeviceById(felica_id: Long): FelicaDevice
 
 }

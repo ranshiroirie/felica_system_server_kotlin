@@ -24,7 +24,7 @@ interface FelicaDeviceRepository {
     ): FelicaDevice
 
     @Select("SELECT * FROM felica_device WHERE felica_id = #{felica_id};")
-    fun selectFelicaDeviceById(@Param("felica_id")felica_id: Int): FelicaDevice
+    fun selectFelicaDeviceById(@Param("felica_id")felica_id: Long): FelicaDevice
 
     @Insert("INSERT INTO felica_device(felica_id, device_name, card_id, card_pmm, card_sys) " +
             "select max(felica_id) + 1, #{device_name}, #{card_id}, #{card_pmm}, #{card_sys} from felica_device;")
@@ -37,11 +37,11 @@ interface FelicaDeviceRepository {
 
     @Update("UPDATE felica_device SET device_name = #{device_name} where felica_id = #{felica_id};")
     fun updateFelicaDeviceNameById(
-            @Param("felica_id")felica_id: Int,
+            @Param("felica_id")felica_id: Long,
             @Param("device_name")device_name: String
     )
 
     @Delete("DELETE FROM felica_device WHERE felica_id = #{felica_id};")
-    fun deleteFelicaDeviceById(@Param("felica_id")felica_id: Int) : Int
+    fun deleteFelicaDeviceById(@Param("felica_id")felica_id: Long) : Long
 
 }
