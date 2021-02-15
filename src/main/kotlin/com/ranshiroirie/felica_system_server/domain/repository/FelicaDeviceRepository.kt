@@ -26,8 +26,8 @@ interface FelicaDeviceRepository {
     @Select("SELECT * FROM felica_device WHERE felica_id = #{felica_id};")
     fun selectFelicaDeviceById(@Param("felica_id")felica_id: Long): FelicaDevice
 
-    @Insert("INSERT INTO felica_device(felica_id, device_name, card_id, card_pmm, card_sys) " +
-            "select max(felica_id) + 1, #{device_name}, #{card_id}, #{card_pmm}, #{card_sys} from felica_device;")
+    @Insert("INSERT INTO felica_device(device_name, card_id, card_pmm, card_sys) " +
+            "values (#{device_name}, #{card_id}, #{card_pmm}, #{card_sys});")
     fun insertFelicaDeviceInfo(
             @Param("device_name")device_name: String,
             @Param("card_id")card_id: String,
