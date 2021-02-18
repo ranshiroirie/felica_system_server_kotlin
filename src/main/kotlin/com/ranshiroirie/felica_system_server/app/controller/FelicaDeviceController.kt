@@ -50,7 +50,7 @@ class FelicaDeviceController {
     fun exceptionInsertCardInfoExisted(e: java.sql.SQLIntegrityConstraintViolationException) : Map<String, String?> =
         mapOf(Pair("error", e.toString()), Pair("message", "Card Info inserted has been existed. 入力されたカード情報は既に存在しています。"))
 
-    @PutMapping("/update/felica_id")
+    @PutMapping("/update/device_name")
     fun updateFelicaDeviceNameById(
         @RequestParam ("felica_id",required=true)felica_id: Long,
         @RequestParam ("device_name", required=true)device_name: String
