@@ -20,8 +20,8 @@ class FelicaDeviceServiceImpl : FelicaDeviceService {
         return felicaDeviceRepository.selectFelicaDeviceList()
     }
 
-    override fun getFelicaDeviceByCardInfo(device_name: String, card_id: String, card_pmm: String, card_sys: String): FelicaDevice {
-        return felicaDeviceRepository.selectFelicaDeviceByCardInfo(device_name, card_id, card_pmm, card_sys)
+    override fun getFelicaDeviceByCardInfo(card_id: String, card_pmm: String, card_sys: String): FelicaDevice {
+        return felicaDeviceRepository.selectFelicaDeviceByCardInfo(card_id, card_pmm, card_sys)
     }
 
     override fun getFelicaDeviceById(felica_id: Long): FelicaDevice {
@@ -30,7 +30,7 @@ class FelicaDeviceServiceImpl : FelicaDeviceService {
 
     override fun getInsertFelicaDeviceInfo(device_name: String, card_id: String, card_pmm: String, card_sys: String): FelicaDevice {
         felicaDeviceRepository.insertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys)
-        val felicaDevice = felicaDeviceRepository.selectFelicaDeviceByCardInfo(device_name, card_id, card_pmm, card_sys)
+        val felicaDevice = felicaDeviceRepository.selectFelicaDeviceByCardInfo(card_id, card_pmm, card_sys)
         insertTimestamp(felicaDevice,"Add Device","TEST")
         return felicaDevice
     }

@@ -7,7 +7,6 @@ interface FelicaDeviceService {
     fun getFelicaDeviceList(): List<FelicaDevice>
 
     fun getFelicaDeviceByCardInfo(
-            device_name: String,
             card_id: String,
             card_pmm: String,
             card_sys: String

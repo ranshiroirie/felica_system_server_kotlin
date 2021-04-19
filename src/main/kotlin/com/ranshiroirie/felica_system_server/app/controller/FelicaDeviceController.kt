@@ -21,12 +21,11 @@ class FelicaDeviceController {
 
     @GetMapping("/get/card_info")
     fun getFelicaDeviceByCardInfo(
-        @RequestParam ("device_name", required=true)device_name: String,
         @RequestParam ("card_id", required=true)card_id: String,
         @RequestParam ("card_pmm", required=true)card_pmm: String,
         @RequestParam ("card_sys", required=true) card_sys: String
     ): FelicaDevice{
-        return felicaDeviceService.getFelicaDeviceByCardInfo(device_name, card_id, card_pmm, card_sys)
+        return felicaDeviceService.getFelicaDeviceByCardInfo(card_id, card_pmm, card_sys)
     }
 
     @GetMapping("/get/felica_id")

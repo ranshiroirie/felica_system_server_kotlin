@@ -12,12 +12,10 @@ interface FelicaDeviceRepository {
     fun selectFelicaDeviceList(): List<FelicaDevice>
 
     @Select("SELECT * FROM felica_device WHERE " +
-            "device_name = #{device_name} && " +
             "card_id = #{card_id} && " +
             "card_pmm = #{card_pmm} && " +
             "card_sys = #{card_sys};")
     fun selectFelicaDeviceByCardInfo(
-            @Param("device_name")device_name: String,
             @Param("card_id")card_id: String,
             @Param("card_pmm")card_pmm: String,
             @Param("card_sys")card_sys: String
