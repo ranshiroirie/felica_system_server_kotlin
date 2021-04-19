@@ -28,22 +28,22 @@ class FelicaDeviceServiceImpl : FelicaDeviceService {
         return felicaDeviceRepository.selectFelicaDeviceById(felica_id)
     }
 
-    override fun getInsertFelicaDeviceInfo(device_name: String, card_id: String, card_pmm: String, card_sys: String): FelicaDevice {
+    override fun getInsertFelicaDeviceInfo(device_name: String, card_id: String, card_pmm: String, card_sys: String, operation_device: String): FelicaDevice {
         felicaDeviceRepository.insertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys)
         val felicaDevice = felicaDeviceRepository.selectFelicaDeviceByCardInfo(card_id, card_pmm, card_sys)
-        insertTimestamp(felicaDevice,"Add Device","TEST")
+        insertTimestamp(felicaDevice,"Add Device",operation_device)
         return felicaDevice
     }
 
-    override fun getUpdateFelicaDeviceNameById(felica_id: Long, device_name: String): FelicaDevice {
+    override fun getUpdateFelicaDeviceNameById(felica_id: Long, device_name: String, operation_device: String): FelicaDevice {
         felicaDeviceRepository.updateFelicaDeviceNameById(felica_id, device_name)
         val felicaDevice = felicaDeviceRepository.selectFelicaDeviceById(felica_id)
-        insertTimestamp(felicaDevice, "Update Device", "TEST")
+        insertTimestamp(felicaDevice, "Update Device", operation_device)
         return felicaDevice
     }
 
-    override fun getDeleteFelicaDeviceById(felica_id: Long): FelicaDevice {
-        insertTimestamp(felicaDeviceRepository.selectFelicaDeviceById(felica_id),"Delete Device", "TEST")
+    override fun getDeleteFelicaDeviceById(felica_id: Long, operation_device: String): FelicaDevice {
+        insertTimestamp(felicaDeviceRepository.selectFelicaDeviceById(felica_id),"Delete Device", operation_device)
         felicaDeviceRepository.deleteFelicaDeviceById(felica_id)
         return felicaDeviceRepository.selectFelicaDeviceById(felica_id)
     }

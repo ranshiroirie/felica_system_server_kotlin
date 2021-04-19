@@ -40,9 +40,10 @@ class FelicaDeviceController {
         @RequestParam ("device_name", required=true)device_name: String,
         @RequestParam ("card_id", required=true)card_id: String,
         @RequestParam ("card_pmm", required=true)card_pmm: String,
-        @RequestParam ("card_sys", required=true)card_sys: String
+        @RequestParam ("card_sys", required=true)card_sys: String,
+        @RequestParam ("operation_device", required=true)operation_device: String
     ):ResponseEntity<FelicaDevice>{
-        return ResponseEntity.ok(felicaDeviceService.getInsertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys))
+        return ResponseEntity.ok(felicaDeviceService.getInsertFelicaDeviceInfo(device_name, card_id, card_pmm, card_sys, operation_device))
     }
 
     @ExceptionHandler(java.sql.SQLIntegrityConstraintViolationException::class)
@@ -52,15 +53,17 @@ class FelicaDeviceController {
     @PutMapping("/update/device_name")
     fun updateFelicaDeviceNameById(
         @RequestParam ("felica_id",required=true)felica_id: Long,
-        @RequestParam ("device_name", required=true)device_name: String
+        @RequestParam ("device_name", required=true)device_name: String,
+        @RequestParam ("operation_device", required=true)operation_device: String
     ):FelicaDevice{
-        return felicaDeviceService.getUpdateFelicaDeviceNameById(felica_id, device_name)
+        return felicaDeviceService.getUpdateFelicaDeviceNameById(felica_id, device_name, operation_device)
     }
 
     @DeleteMapping("/delete/felica_id")
     fun deleteFelicaDeviceById(
-        @RequestParam ("felica_id",required=true)felica_id: Long
+        @RequestParam ("felica_id",required=true)felica_id: Long,
+        @RequestParam ("operation_device", required=true)operation_device: String
     ):FelicaDevice{
-        return felicaDeviceService.getDeleteFelicaDeviceById(felica_id)
+        return felicaDeviceService.getDeleteFelicaDeviceById(felica_id, operation_device)
     }
 }
